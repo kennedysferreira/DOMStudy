@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        console.log('Elemento "ul" ............')
+        console.log('childNode', lista.childNodes)
+        // console.log('destino', lista.destino) por ser um atributo personalisado nao da para ser acessado com a notaçao ponto
+        console.log('getAttribute', lista.getAttribute('destino'))
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+        lista.setAttribute('destino', 'empresa') //Pode adicionar ou alterar atributos
+        console.log('Attr', lista.getAttribute('destino'))
+        lista.setAttribute('status', 'aberto')
+        console.log('Set', lista.getAttribute('status'))
+        lista.removeAttribute('destino')
+
+        // atributos personalisados que recebem data- como prefixo, tem um tratamento diferenciado mas nao tem uma obrigaçao de ser usado esse tipo de padrao
+        console.log(lista.dataset.urgencia)
+        lista.dataset.urgencia = 4
+        console.log(lista.getAttribute('data-urgencia'))
+
+        //cuidado ao usar nomes reservados da linguagem como atributos personalisados
+        const label = document.querySelector('label')
+        console.log(label.for)
+        console.log(label.htmlFor)
+        console.log(label.getAttribute('for'))
+        
+
+    </script>
+</body>
+
+</html>

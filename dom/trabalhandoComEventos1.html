@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <a espera-um-pouco href="https://google.com.br" >Google</a>
+        <!-- onclick="navegarEm5s(event)" colocando o evento diretamente no html tem vantagem de ter um codigo mais explicito
+        porem a desvantagem e fazer tudo manualmente (digitar o codigo das funçoes diretamente no html)-->
+    </div>
+    <script>
+        function navegarEm5s(e) {
+            e.preventDefault() // para previnir o evento padrao, fazendo com que tenha mais controle sobre os eventos
+            console.log('saindo em 5s...')
+            setTimeout(() => {
+                const link = e.target
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s    ... a desvantagem de colocar o evento apenas no js e que nao ficara explicito onde o codigo esta agindo no html
+
+        const a = document.querySelector('[espera-um-pouco]') //a melhor opcao para resolver os problemas acima e ter um atributo personalizado
+        a.onclick = navegarEm5s
+    </script>
+</body>
